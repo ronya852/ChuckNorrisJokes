@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 let baseURL = "http://api.icndb.com/jokes/random/"
 
@@ -28,7 +29,7 @@ class DataService {
         }.resume()
     }
     
-    func getJokes(_ searchRequest: String, complition: @escaping ([Joke])->()) {
+    func getJokes(_ searchRequest: Int, complition: @escaping ([Joke])->()) {
         
         var jokes = [Joke]()
         let path = "\(baseURL)\(searchRequest)"

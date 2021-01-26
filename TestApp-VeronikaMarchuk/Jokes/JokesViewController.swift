@@ -25,21 +25,29 @@ class JokesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         activityIndicator.isHidden = true
-        configureKeyboardNotifications()
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        configureKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     @IBAction func loadButtonAction(_ sender: Any) {
-        startAnimating()
-        jokes.removeAll()
-        tableView.reloadData()
-        emptyScreenLabel.isHidden = true
         let request = textField.text
-        if request == nil || request == "" {
+        let requestInt: Int = Int(request!) ?? 0
+        if request == nil || requestInt == 0 {
             emptyTextFieldAlert()
             stopAnimating()
         } else {
-            DataService.shared.getJokes(request ?? "") { [weak self] (requestedJokes) in
+            startAnimating()
+            jokes.removeAll()
+            tableView.reloadData()
+            emptyScreenLabel.isHidden = true
+            DataService.shared.getJokes(requestInt) { [weak self] (requestedJokes) in
                 self?.jokes = requestedJokes
                 DispatchQueue.main.async {
                     let resultCount = requestedJokes.count
@@ -54,7 +62,7 @@ class JokesViewController: UIViewController {
     }
     
     func errorAlert() {
-        let archiveMenu = UIAlertController(title: nil, message: "Not found", preferredStyle: .alert)
+        let archiveMenu = UIAlertController(title: nil, message: "Error. Try again", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         archiveMenu.addAction(cancelAction)
