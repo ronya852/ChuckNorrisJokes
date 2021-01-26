@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mH7-yM-iab">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--API-->
+        <scene sceneID="bam-xe-OTU">
+            <objects>
+                <viewController restorationIdentifier="WebViewViewController" storyboardIdentifier="WebViewViewController" id="N4a-8X-niZ" customClass="WebViewViewController" customModule="TestApp_VeronikaMarchuk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ah0-DW-XrU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZ4-t6-0Hz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZFF-cc-wj0">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemPinkColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UYd-7p-kej"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UYd-7p-kej" firstAttribute="bottom" secondItem="LZ4-t6-0Hz" secondAttribute="bottom" id="NvT-bM-Kd6"/>
+                            <constraint firstItem="LZ4-t6-0Hz" firstAttribute="leading" secondItem="UYd-7p-kej" secondAttribute="leading" id="O2y-u3-uUb"/>
+                            <constraint firstItem="UYd-7p-kej" firstAttribute="trailing" secondItem="LZ4-t6-0Hz" secondAttribute="trailing" id="OfC-tq-DhT"/>
+                            <constraint firstItem="LZ4-t6-0Hz" firstAttribute="top" secondItem="UYd-7p-kej" secondAttribute="top" id="RJt-1o-ndV"/>
+                            <constraint firstItem="ZFF-cc-wj0" firstAttribute="centerY" secondItem="Ah0-DW-XrU" secondAttribute="centerY" id="Sly-88-lHv"/>
+                            <constraint firstItem="ZFF-cc-wj0" firstAttribute="centerX" secondItem="Ah0-DW-XrU" secondAttribute="centerX" id="jie-io-I6t"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="API" id="2zC-dm-Lvq"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ZFF-cc-wj0" id="4t1-vk-AIW"/>
+                        <outlet property="webView" destination="LZ4-t6-0Hz" id="s9a-Dr-JOH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xyL-2F-va8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797.10144927536237" y="90.401785714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="V0s-OT-O4I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mH7-yM-iab" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wrk-6k-biK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N4a-8X-niZ" kind="relationship" relationship="rootViewController" id="Hro-JC-0LB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Si-QV-Zc5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-113.04347826086958" y="90.401785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

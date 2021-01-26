@@ -1,0 +1,6 @@
+framework module Pods_TestApp_VeronikaMarchuk {
+  umbrella header "Pods-TestApp-VeronikaMarchuk-umbrella.h"
+
+  export *
+  module * { export * }
+}
